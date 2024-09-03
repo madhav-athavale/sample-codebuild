@@ -1,8 +1,16 @@
-import pandas as pd
+import requests
+import json
 
 
 def lambda_handler(event, context):
-    d = {'col1': [1, 2], 'col2': [3, 4]}
-    df = pd.DataFrame(data=d)
-    print(df)
-    print('Done x1.1')
+    latitude = '40.71427'
+    longitude = '-74.00597'
+    api_url = f"https://api.openweathermap.org/data/2.5/weather?lat=40.71427&lon=-74.00597&appid=b5cd2f38a8c37fc39dfc85ce74c1af5c"
+    response = requests.get(api_url)
+    json_object = json.loads(response.text)
+    print(json_object)
+    return json_object
+
+
+if __name__ == '__main--':
+    lambda_handler('', '')
